@@ -1,0 +1,97 @@
+body {
+  background-color: #3E4047;
+  color: white;
+  cursor: default;
+}
+
+.btn-success {
+  background-color: #48974D;
+}
+.btn-success:hover {
+  background-color: #3E8142;
+}
+
+.sidebar-cont {
+  background-color: #2B2C32;
+}
+
+.sidebar-list-cont {
+  overflow-y: scroll;
+  height: calc(100vh - 82px);
+}
+
+.sidebar-list-cont::-webkit-scrollbar {
+  width: 15px;
+}
+.sidebar-list-cont::-webkit-scrollbar-track {
+    background: #36373E;
+}
+.sidebar-list-cont::-webkit-scrollbar-thumb {
+    background: #2B2C32;
+}
+.sidebar-list-cont::-webkit-scrollbar-thumb:hover {
+    background: #2B2C32;
+}
+
+.sidebar-list-item {
+  background-color: #2B2C32;
+  border-color: #36373E;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.sidebar-list-item:hover {
+  background-color: #36373E;
+}
+.sidebar-list-item-active {
+  background-color: #36373E;
+  border-color: #36373E;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.sidebar-list-item-active:hover {
+  background-color: #2B2C32;
+}
+
+.date-range-dropdown {
+  background-color: #36373E;
+}
+
+.date-range-dropdown-item {
+  background-color: #2B2C32;
+  border-top: 1px solid #3E4047;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.date-range-dropdown-item:hover {
+  background-color: #36373E;
+  border-top: 1px solid #3E4047;
+}
+.date-range-dropdown-button {
+  cursor: pointer;
+}
+
+.color-dropdown {
+  background-color: #36373E;
+}
+
+.color-dropdown-item {
+  background-color: #2B2C32;
+  cursor: pointer;
+}
+.color-dropdown-item:hover {
+  background-color: #36373E;
+  border-left: 2px solid #3E4047;
+}
+.color-dropdown-button {
+  cursor: pointer;
+}
+
+.graph-nav {
+  background-color: #2B2C32;
+  /* box-shadow: 0px 1px 1px #000; */
+  border-bottom: 1px solid #1D1D20;
+}
+
+.graph {
+  height: calc(100vh - 58px);
+}
