@@ -22,12 +22,6 @@ export function getCurrencyData(currency) {
   return {type: GET_CURRENCY_DATA, payload};
 }
 
-// export function getCurrencyHistory(currency, time) {
-//   const response = axios.get(`http://coincap.io/history/${time}/${currency}`);
-//
-//   return {type: GET_CURRENCY_HISTORY, payload: {response, time}};
-// }
-
 export function getCurrencyHistory(history, currency, time) {
   return {type: GET_CURRENCY_HISTORY, payload: {history, time}};
 }
