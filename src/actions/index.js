@@ -6,27 +6,32 @@ import {
   CHANGE_DATE_RANGE,
   CHANGE_COLOR,
   FILTER_CURRENCIES,
-  UNFILTER_CURRENCIES
-} from 'actions/types';
-import axios from 'axios';
+  UNFILTER_CURRENCIES,
+  SET_LOADERS
+} from "actions/types";
+import axios from "axios";
+
+export function setLoaders(loaderDetails) {
+  return {
+    type: SET_LOADERS,
+    payload: loaderDetails
+  };
+}
 
 export function getCurrencies() {
-  // const payload = axios.get('http://coincap.io/map');
-  const payload = axios.get('https://api.coincap.io/v2/assets');
+  const payload = axios.get("https://api.coincap.io/v2/assets");
 
-  return {type: GET_CURRENCIES, payload};
+  return { type: GET_CURRENCIES, payload };
 }
 
 export function getCurrencyData(currency) {
-  // const payload = axios.get(`http://coincap.io/page/${currency}`);
   const payload = axios.get(`https://api.coincap.io/v2/assets/${currency}`);
-  // api.coincap.io/v2/assets/bitcoin
 
-  return {type: GET_CURRENCY_DATA, payload};
+  return { type: GET_CURRENCY_DATA, payload };
 }
 
 export function getCurrencyHistory(history, currency, time) {
-  return {type: GET_CURRENCY_HISTORY, payload: {history, time}};
+  return { type: GET_CURRENCY_HISTORY, payload: { history, time } };
 }
 
 export function changeCurrency(newCurrency) {
@@ -45,12 +50,12 @@ export function changeDateRange(newDateRange) {
 
 export function changeColor(newColor) {
   var colors = {
-    Blue: ['rgb(86,93,236)','rgb(73, 77, 171)'],
-    Green: ['rgb(67,214,69)','rgb(55,169,56)'],
-    Red: ['rgb(207,45,45)','rgb(155,30,30)'],
-    Gold: ['rgb(208,194,73)','rgb(162,152,61)'],
-    Teal: ['rgb(102,225,212)','rgb(89,173,164)'],
-    Purple: ['rgb(225,102,218)','rgb(188,88,182)']
+    Blue: ["rgb(86,93,236)", "rgb(73, 77, 171)"],
+    Green: ["rgb(96,190,98)", "rgb(75,169,76)"],
+    Red: ["rgb(169, 62, 62)", "rgb(147,43,43)"],
+    Gold: ["rgb(188,177,84)", "rgb(165,155,72)"],
+    Teal: ["rgb(139,192,186)", "rgb(107,169,162)"],
+    Purple: ["rgb(179,113,175)", "rgb(153,86,149)"]
   };
 
   return {
@@ -62,9 +67,9 @@ export function changeColor(newColor) {
 export function filterCurrencies(currencies, filter) {
   return {
     type: FILTER_CURRENCIES,
-    payload: {currencies, filter}
+    payload: { currencies, filter }
   };
 }
 export function unfilterCurrencies() {
-  return {type: UNFILTER_CURRENCIES};
+  return { type: UNFILTER_CURRENCIES };
 }

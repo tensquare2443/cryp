@@ -15,7 +15,10 @@ class Sidebar extends Component {
   }
 
   currencyClick(e) {
-    // var currency = e.currentTarget.innerText;
+    if (this.props.toggleCurrenciesList) {
+      this.props.toggleCurrenciesList();
+    }
+
     var currencyDetails = e.currentTarget.dataset.id.split("_");
 
     var currency = {
@@ -23,29 +26,47 @@ class Sidebar extends Component {
       symbol: currencyDetails[1],
       id: currencyDetails[2]
     };
-    // currency.split("_").forEach(currDet => console.log(currDet));
-    // var currencyId = currency.split("_")[2];
-    // console.log(currency.split(" ").length);
     var dateRange = this.props.dateRange;
+
+    this.props.setLoaders([
+      this.props.loaders,
+      {
+        graph: true,
+        nav: true
+      }
+    ]);
 
     this.props.getCurrencyData(currency.id);
     this.props.changeCurrency(currency);
+
     if (this.props.filteredCurrencies) {
       this.props.unfilterCurrencies();
     }
-    // axios.get(`http://coincap.io/history/${dateRange}/${currency}`).then((response) => {
-    //   this.props.getCurrencyHistory(response.data.price, currency, dateRange);
-    // }).catch((e) => console.log(e));
-    // https://api.coincap.io/v2/assets/bitcoin/history?interval=d1
-    // console.log(currency);
+
     axios
       .get(
         `https://api.coincap.io/v2/assets/${currency.id}/history?interval=d1`
       )
       .then(response => {
         this.props.getCurrencyHistory(response.data.data, currency, dateRange);
+
+        this.props.setLoaders([
+          this.props.loaders,
+          {
+            graph: false
+          }
+        ]);
       })
-      .catch(e => console.log(e));
+      .catch(e => {
+        console.log(e);
+
+        this.props.setLoaders([
+          this.props.loaders,
+          {
+            graph: false
+          }
+        ]);
+      });
   }
   filterInputChange(e) {
     this.setState({ filterInput: e.currentTarget.value });
@@ -79,7 +100,7 @@ class Sidebar extends Component {
               key={currency.symbol}
               data-id={`${currency.name}_${currency.symbol}_${currency.id}`}
             >
-              <div>{currency.name}</div>
+              <div style={{whiteSpace: "nowrap"}}>{currency.name}</div>
               <div style={{ fontSize: "0.8em", marginLeft: "3px" }}>
                 ({currency.symbol})
               </div>
@@ -128,11 +149,16 @@ class Sidebar extends Component {
             </button>
           </div>
         </form>
-        <ul className="list-group sidebar-list-cont">
-          {this.props.filteredCurrencies
-            ? currenciesMapped(this.props.filteredCurrencies)
-            : currenciesMapped(this.props.currencies)}
-        </ul>
+        {
+          this.props.loaders.sidebar ?
+          <div>sjdvnkfsd</div>
+          :
+          <ul className="list-group sidebar-list-cont">
+            {this.props.filteredCurrencies
+              ? currenciesMapped(this.props.filteredCurrencies)
+              : currenciesMapped(this.props.currencies)}
+          </ul>
+        }
       </div>
     );
   }
@@ -143,7 +169,8 @@ function mapStateToProps(state) {
     currencies: state.currencies,
     currency: state.currency,
     dateRange: state.dateRange,
-    filteredCurrencies: state.filteredCurrencies
+    filteredCurrencies: state.filteredCurrencies,
+    loaders: state.loaders
   };
 }
 

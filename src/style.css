@@ -1,19 +1,19 @@
 body {
-  background-color: #3E4047;
+  background-color: #3e4047;
   color: white;
   cursor: default;
-  font-family: 'Ubuntu', sans-serif;
+  font-family: "Ubuntu", sans-serif;
 }
 
 .btn-success {
-  background-color: #48974D;
+  background-color: #48974d;
 }
 .btn-success:hover {
-  background-color: #3E8142;
+  background-color: #3e8142;
 }
 
 .sidebar-cont {
-  background-color: #2B2C32;
+  background-color: #2b2c32;
 }
 
 .sidebar-list-cont {
@@ -25,74 +25,197 @@ body {
   width: 15px;
 }
 .sidebar-list-cont::-webkit-scrollbar-track {
-    background: #36373E;
+  background: #36373e;
 }
 .sidebar-list-cont::-webkit-scrollbar-thumb {
-    background: #2B2C32;
+  background: #2b2c32;
 }
 .sidebar-list-cont::-webkit-scrollbar-thumb:hover {
-    background: #2B2C32;
+  background: #2b2c32;
 }
 
 .sidebar-list-item {
-  background-color: #2B2C32;
-  border-color: #36373E;
+  background-color: #2b2c32;
+  border-color: #36373e;
   cursor: pointer;
   transition: all 0.2s;
 }
 .sidebar-list-item:hover {
-  background-color: #36373E;
+  background-color: #36373e;
 }
 .sidebar-list-item-active {
-  background-color: #36373E;
-  border-color: #36373E;
+  background-color: #36373e;
+  border-color: #36373e;
   cursor: pointer;
   transition: all 0.2s;
 }
 .sidebar-list-item-active:hover {
-  background-color: #2B2C32;
+  background-color: #2b2c32;
 }
 
 .date-range-dropdown {
-  background-color: #36373E;
+  background-color: #36373e;
 }
 
 .date-range-dropdown-item {
-  background-color: #2B2C32;
-  border-top: 1px solid #3E4047;
+  background-color: #2b2c32;
+  border-top: 1px solid #3e4047;
   cursor: pointer;
   transition: all 0.2s;
 }
 .date-range-dropdown-item:hover {
-  background-color: #36373E;
-  border-top: 1px solid #3E4047;
+  background-color: #36373e;
+  border-top: 1px solid #3e4047;
 }
 .date-range-dropdown-button {
   cursor: pointer;
 }
 
 .color-dropdown {
-  background-color: #36373E;
+  background-color: #36373e;
 }
 
 .color-dropdown-item {
-  background-color: #2B2C32;
+  background-color: #2b2c32;
   cursor: pointer;
 }
 .color-dropdown-item:hover {
-  background-color: #36373E;
-  border-left: 2px solid #3E4047;
+  background-color: #36373e;
+  border-left: 2px solid #3e4047;
 }
 .color-dropdown-button {
   cursor: pointer;
 }
 
 .graph-nav {
-  background-color: #2B2C32;
+  background-color: #2b2c32;
   /* box-shadow: 0px 1px 1px #000; */
-  border-bottom: 1px solid #1D1D20;
+  border-bottom: 1px solid #1d1d20;
 }
 
 .graph {
   height: calc(100vh - 58px);
+}
+
+.chartjs-render-monitor {
+  max-width: 1200px;
+  margin: auto;
+  padding-right: 0;
+}
+@media (min-width: 576px) {
+  .chartjs-render-monitor {
+    padding-right: 7px;
+  }
+}
+@media (min-width: 1600px) {
+  .chartjs-render-monitor {
+    padding-top: 40px;
+  }
+}
+
+.graph-container {
+  position: relative;
+}
+
+.graph-loader-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: black;
+  opacity: 0.4;
+  width: 100%;
+  height: 100%;
+}
+
+.graph-loader {
+  position: absolute;
+  top: calc(40% - 32px);
+  left: calc(50% - 32px);
+}
+
+.lds-dual-ring {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+}
+.lds-dual-ring:after {
+  content: " ";
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 6px solid #fff;
+  border-color: #fff transparent #fff transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.lds-dual-ring-sm {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+}
+.lds-dual-ring-sm:after {
+  content: " ";
+  display: block;
+  width: 12px;
+  height: 12px;
+  margin: 4px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  border-color: #fff transparent #fff transparent;
+  animation: lds-dual-ring-sm 1.2s linear infinite;
+}
+@keyframes lds-dual-ring-sm {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.currencies-sm {
+  display: none;
+}
+
+.view-another-curr-btn {
+  background-color: grey;
+  color: white;
+  background-color: #2b2c32;
+  border: 2px solid #1f1f1f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.view-another-curr-btn:hover {
+  background-color: #1f1f1f;
+}
+.view-another-curr-btn-container {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .currencies-sm {
+    display: block;
+    height: 250px;
+    overflow-y: hidden;
+  }
+  .sidebar-list-cont {
+    height: 168px;
+  }
+  .view-another-curr-btn-container {
+    display: block;
+  }
+  .graph {
+    height: initial;
+  }
 }
