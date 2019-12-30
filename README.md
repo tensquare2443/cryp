@@ -1,5 +1,7 @@
-**Cryptocurrency Charts App**  
-View and interact with cryptocurrency data. 1000+ cryptocurrencies are included.  
-Hosted live on Surge: http://endurable-cushion.surge.sh  
-Built with: React, Redux, ChartJS, Bootstrap 4, Jest  
-Also uses: coincap.io API.
+# Cryptocurrency Charts  
+
+**View the app here**: https://cryptocurr-80.surge.sh/  
+
+Built with: React, Redux, ChartJS, Bootstrap 4  
+
+This is built in React & Redux. Go to the app and click on a cryptocurrency to view its historical & current price. Customize the graph and change the time period using the options on the nav bar.

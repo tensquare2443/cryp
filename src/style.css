@@ -2,6 +2,7 @@ body {
   background-color: #3E4047;
   color: white;
   cursor: default;
+  font-family: 'Ubuntu', sans-serif;
 }
 
 .btn-success {
