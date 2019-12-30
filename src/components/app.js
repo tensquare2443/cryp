@@ -7,10 +7,10 @@ class App extends Component {
     return(
       <div className="container-fluid px-0">
         <div className="row no-gutters">
-          <div className="d-none d-sm-block col-sm-2 sidebar-cont">
+          <div className="d-none d-md-block col-md-3 sidebar-cont">
             <Sidebar/>
           </div>
-          <div className="col-12 col-sm-10">
+          <div className="col-12 col-md-9">
             <GraphContainer/>
           </div>
         </div>

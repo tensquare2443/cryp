@@ -6,10 +6,15 @@ import {Line} from 'react-chartjs-2';
 
 class Graph extends Component {
   componentDidMount() {
-    this.props.getCurrencyData('BTC');
+    this.props.getCurrencyData('bitcoin');
 
-    axios.get(`http://coincap.io/history/30day/BTC`).then((response) => {
-      this.props.getCurrencyHistory(response.data.price, 'BTC', '30day');
+    // axios.get(`http://coincap.io/history/30day/BTC`).then((response) => {
+    //   this.props.getCurrencyHistory(response.data.price, 'BTC', '30day');
+    // }).catch((e) => console.log(e));
+    axios.get(`https://api.coincap.io/v2/assets/bitcoin/history?interval=d1`).then((response) => {
+      // console.log(response);
+      // this.props.getCurrencyHistory(response.data.price, 'BTC', '30day');
+      this.props.getCurrencyHistory(response.data.data, 'BTC', '30day');
     }).catch((e) => console.log(e));
   }
 

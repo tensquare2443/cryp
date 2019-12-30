@@ -11,13 +11,16 @@ import {
 import axios from 'axios';
 
 export function getCurrencies() {
-  const payload = axios.get('http://coincap.io/map');
+  // const payload = axios.get('http://coincap.io/map');
+  const payload = axios.get('https://api.coincap.io/v2/assets');
 
   return {type: GET_CURRENCIES, payload};
 }
 
 export function getCurrencyData(currency) {
-  const payload = axios.get(`http://coincap.io/page/${currency}`);
+  // const payload = axios.get(`http://coincap.io/page/${currency}`);
+  const payload = axios.get(`https://api.coincap.io/v2/assets/${currency}`);
+  // api.coincap.io/v2/assets/bitcoin
 
   return {type: GET_CURRENCY_DATA, payload};
 }

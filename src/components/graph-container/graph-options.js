@@ -6,11 +6,11 @@ import axios from 'axios';
 class GraphOptions extends Component {
   dateRangeChange(e) {
     var dateRange = e.currentTarget.innerText.split(' ')[0] + 'day';
-    var currency = this.props.currency;
+    var currency = this.props.currency.id;
 
     this.props.changeDateRange(dateRange);
-    axios.get(`http://coincap.io/history/${dateRange}/${currency}`).then((response) => {
-      this.props.getCurrencyHistory(response.data.price, currency, dateRange);
+    axios.get(`https://api.coincap.io/v2/assets/${currency}/history?interval=d1`).then((response) => {
+      this.props.getCurrencyHistory(response.data.data, currency, dateRange);
     }).catch((e) => console.log(e));
   }
   colorChange(e) {
@@ -18,8 +18,8 @@ class GraphOptions extends Component {
   }
 
   render() {
-    if (this.props.currencyData && this.props.currencyData.price_usd) {
-      var currencyUsd = this.props.currencyData.price_usd;
+    if (this.props.currencyData.data && this.props.currencyData.data.priceUsd) {
+      var currencyUsd = +this.props.currencyData.data.priceUsd;
       if (currencyUsd/1 < 0.01) {
         currencyUsd = `$${currencyUsd.toFixed(4)}`;
       } else if (currencyUsd/1 < 1) {
@@ -59,11 +59,11 @@ class GraphOptions extends Component {
     });
     return(
       <nav className="navbar navbar-expand-lg navbar-dark graph-nav">
-        <div className="navbar-brand text-white">{this.props.currency}</div>
+        <div className="navbar-brand text-white">{this.props.currency.symbol}</div>
         <ul className="navbar-nav mr-auto d-none d-sm-block">
           <li className="nav-item">
             <div className="nav-link text-white">
-              {`One ${this.props.currency} = ${currencyUsd} USD`}
+              {`One ${this.props.currency.symbol} = ${currencyUsd} USD`}
             </div>
           </li>
         </ul>

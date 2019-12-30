@@ -3,6 +3,8 @@ import {GET_CURRENCY_HISTORY} from 'actions/types';
 export default function(state = [], action) {
   switch (action.type) {
     case GET_CURRENCY_HISTORY:
+      // console.log(action.payload);
+
     const months = {
       Jan: '1',
       Feb: '2',
@@ -24,11 +26,13 @@ export default function(state = [], action) {
     }
     var dateRange = action.payload.time.replace('day', '')/1;
     var prices = action.payload.history.map((date) => {
-      var dateArr = new Date(date[0]).toString().split(' ');
+      // var dateArr = new Date(date[0]).toString().split(' ');
+      var dateArr = new Date(date.date).toString().split(' ');
 
       return {
         date: `${months[dateArr[1]]}/${days(dateArr[2])}/${dateArr[3][2].concat(dateArr[3][3])}`,
-        price: date[1]
+        // price: date[1]
+        price: date.priceUsd
       };
     });
     var pricesFiltered = [];
