@@ -53,6 +53,12 @@ body {
   background-color: #2b2c32;
 }
 
+.sidebar-list-item:not(*:root),
+.sidebar-list-item-active:not(*:root) {
+  padding: 1em 0.8em !important;
+}
+
+
 .date-range-dropdown {
   background-color: #36373e;
 }

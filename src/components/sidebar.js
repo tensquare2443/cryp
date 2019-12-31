@@ -85,6 +85,9 @@ class Sidebar extends Component {
   }
 
   render() {
+    var isChromium = !!window.chrome;
+    console.log(isChromium);
+
     const currenciesMapped = currencies => {
       return currencies.map(currency => {
         if (currency.symbol !== this.props.currency.symbol) {
@@ -100,7 +103,9 @@ class Sidebar extends Component {
               key={currency.symbol}
               data-id={`${currency.name}_${currency.symbol}_${currency.id}`}
             >
-              <div style={{whiteSpace: "nowrap"}}>{currency.name}</div>
+              <div style={{whiteSpace: "nowrap"}}>
+                {currency.name}
+              </div>
               <div style={{ fontSize: "0.8em", marginLeft: "3px" }}>
                 ({currency.symbol})
               </div>
